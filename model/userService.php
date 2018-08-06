@@ -99,7 +99,7 @@ class UserService
 		$message = $dataStatus = $data = null;
 		
 		try {
-			$stmt = $this->conn->prepare("CALL SelUsersScreenByAccountID(?)");
+			$stmt = $this->conn->prepare("CALL spSelUsersScreenByAccountID(?)");
 			$stmt->bindParam(1,$aid, PDO::PARAM_INT);
 			$stmt->execute();
 			if($stmt->rowCount() >= 1) {

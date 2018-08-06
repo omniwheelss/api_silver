@@ -25,7 +25,7 @@ class DeviceService
 		$message = $dataStatus = $data = null;
 		
 		try {
-			$stmt = $this->conn->prepare("CALL selDeviceCurrentStatusByIMEI(?)");
+			$stmt = $this->conn->prepare("CALL spSelDeviceCurrentStatusByIMEI(?)");
 			$stmt->bindParam(1,$imei, PDO::PARAM_STR);
 			$stmt->execute();
 			if($stmt->rowCount() == 1) {
@@ -58,7 +58,7 @@ class DeviceService
 		$userAccountID = $aid;
 		
 		try {
-			$stmt = $this->conn->prepare("CALL selDeviceDetailsByAccountID(?)");
+			$stmt = $this->conn->prepare("CALL spSelDeviceDetailsByAccountID(?)");
 			$stmt->bindParam(1,$userAccountID, PDO::PARAM_INT);
 			$stmt->execute();
 			if($stmt->rowCount() > 0) {
